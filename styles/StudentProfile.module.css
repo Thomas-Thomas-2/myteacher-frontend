@@ -1,0 +1,173 @@
+.page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1;
+    background-color: #f3f3f3;
+    padding: 30px 20px 40px;
+}
+
+.title {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #2f2a28;
+    margin-bottom: 24px;
+}
+
+.card {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 32px;
+    align-items: start;
+}
+
+.leftColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.rightColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 18px;
+}
+
+.avatarWrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.avatarPreview {
+    width: 120px;
+    height: 120px;
+    border-radius: 999px;
+    object-fit: cover;
+    border: 4px solid #a9d8f3;
+    background-color: #eaeaea;
+}
+
+.avatarEditButton {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 999px;
+    background-color: #a9d8f3;
+    color: #ffffff;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatarEditButton:hover {
+    opacity: 0.95;
+}
+
+.identityBlock {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.row {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.row label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #2f2a28;
+}
+
+.row input {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
+    border: 1px solid #d4d4d4;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background: #fff;
+    color: #2f2a28;
+    outline: none;
+}
+
+.row input:focus {
+    border-color: #9fd3ef;
+    box-shadow: 0 0 0 3px rgba(159, 211, 239, 0.2);
+}
+
+.row input:disabled {
+    background-color: #f1f1f1;
+    color: #777;
+    cursor: not-allowed;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 8px;
+}
+
+.saveButton {
+    min-width: 220px;
+    height: 46px;
+    border: none;
+    border-radius: 8px;
+    background-color: #a9d8f3;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.saveButton:hover {
+    opacity: 0.95;
+}
+
+.message {
+    margin-top: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #4b7f52;
+}
+
+@media (max-width: 900px) {
+    .card {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .leftColumn {
+        align-items: center;
+    }
+
+    .actions {
+        justify-content: center;
+    }
+
+    .saveButton {
+        width: 100%;
+    }
+}

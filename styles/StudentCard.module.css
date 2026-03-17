@@ -1,0 +1,98 @@
+.content {
+  /* border: 1px solid red; */
+  width: 100%;
+  height: 35px;
+  padding: 0px 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Roboto-Regular";
+  border-bottom: 1px lightgrey solid;
+  gap: 5px;
+}
+
+.studentLink {
+  background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    text-align: left;
+}
+
+.studentLink:hover {
+  color: rgb(45, 45, 45);
+  cursor: pointer;
+}
+
+.name {
+  font-family: "Roboto Bold";
+  font-size: 15px;
+}
+
+.discipline,
+.selectList {
+  font-family: "Roboto Italic";
+  font-size: 15px;
+  width: 17.5%;
+  text-align: center;
+}
+
+.inviteBtn {
+  background-color: #a6d9f7;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  width: 17.5%;
+}
+
+.inviteBtn:hover {
+  background-color: #84b7d4;
+  cursor: pointer;
+}
+
+.inviteText {
+  font-family: "Roboto SemiBold";
+  font-size: 15px;
+  color: white;
+}
+
+.subscription {
+  padding: 5px;
+  border-radius: 5px;
+  font-family: "Roboto Italic";
+  font-size: 15px;
+  background-color: #84dccf;
+  text-align: center;
+  width: 17.5%;
+}
+
+.nameBlock {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 20%;
+}
+
+.messageBtn {
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 999px;
+  background: #efe7ff;
+  color: #7fc9b6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.messageBtn:hover {
+  background: #7c3aed;
+  color: white;
+  transform: translateY(-1px);
+}

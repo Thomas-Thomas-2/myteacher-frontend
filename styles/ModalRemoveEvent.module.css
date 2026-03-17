@@ -1,0 +1,77 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+}
+
+.card {
+  width: 35%;
+  max-width: 80%;
+  padding: 1%;
+  border-radius: 10px;
+  background: whitesmoke;
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.55);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close {
+  background: transparent;
+  color: rgb(0, 0, 0);
+  font-size: 30px;
+  cursor: pointer;
+  border: none;
+}
+
+.close:hover {
+  color: #3e3e3e;
+}
+
+.title {
+  text-align: center;
+  font-size: 20px;
+  font-family: "Roboto Bold";
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+}
+
+.eventInfo {
+  font-family: "Roboto Regular";
+  font-size: 15px;
+}
+
+.btnDeleteEvent {
+  background: #a6d9f7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  width: 50%;
+  font-family: "Roboto Bold";
+  font-size: 15px;
+}
+
+.btnDeleteEvent:hover {
+  background: #84b7d4;
+}

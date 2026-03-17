@@ -1,0 +1,103 @@
+.content {
+  width: 100%;
+  padding: 12px 16px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 140px;
+  align-items: center;
+  gap: 18px;
+  font-family: "Roboto-Regular";
+  border-bottom: 1px solid rgb(211, 211, 211);
+  box-sizing: border-box;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.name {
+  margin: 0;
+  font-family: "Roboto Bold";
+  font-size: 15px;
+  line-height: 1.2;
+  color: #1f1f1f;
+}
+
+.term {
+  margin: 4px 0 0;
+  font-family: "Roboto Italic";
+  font-size: 14px;
+  line-height: 1.2;
+  color: #666;
+}
+
+.middle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.date,
+.amount {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.2;
+  color: #222;
+}
+
+.right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.status {
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-family: "Roboto Italic";
+  font-size: 14px;
+  text-align: center;
+  min-width: 110px;
+  box-sizing: border-box;
+}
+
+.paid {
+  background: #cdebdc;
+  color: #1f6b46;
+}
+
+.pending {
+  background: #ead0d5;
+  color: #7a4c56;
+}
+
+.scheduled {
+  background: #d6e7f7;
+  color: #3c6282;
+}
+
+.late {
+  background: #f4b5b5;
+  color: #a01818;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .content {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .middle {
+    align-items: flex-start;
+  }
+
+  .right {
+    justify-content: flex-start;
+  }
+
+  .status {
+    min-width: unset;
+  }
+}

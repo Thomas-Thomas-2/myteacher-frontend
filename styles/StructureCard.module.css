@@ -1,0 +1,73 @@
+.content {
+  width: 100%;
+  padding: 0px 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  font-family: "Roboto-Regular";
+  gap: 5px;
+  background-color: whitesmoke;
+  padding: 5px;
+  border-bottom: 1px solid black;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.title {
+  font-family: "Roboto Bold";
+  font-size: 15px;
+  width: 100%;
+  text-align: left;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.structureData {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  align-items: center;
+}
+
+.detailsBlock {
+  border: 1px solid #a6d9f7;
+  width: 30%;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.blockTitle {
+  font-family: "Roboto Italic";
+  font-size: 14px;
+  border-bottom: 1px solid rgb(153, 152, 152);
+  width: 100%;
+  text-align: center;
+}
+
+.blockInfo {
+  font-family: "Roboto Regular";
+  font-size: 13px;
+}
+
+.icon {
+  color: #312f2f;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.icon:hover {
+  color: #615d5d;
+  cursor: pointer;
+}

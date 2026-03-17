@@ -1,0 +1,58 @@
+.planningCalendar {
+  width: 100%;
+  flex: 1;
+  height: 100%;
+}
+
+.planningCalendar:global(.rbc-calendar) {
+  font-family: "Roboto Regular";
+}
+
+.planningCalendar :global(.rbc-toolbar-label) {
+  font-family: "Roboto Regular";
+  color: #312f2f;
+  font-size: 15px;
+  min-width: 50px;
+}
+
+.planningCalendar :global(.rbc-toolbar button) {
+  background: #a6d9f7;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+
+.planningCalendar :global(.rbc-toolbar button:hover) {
+  background: #84b7d4;
+}
+
+.planningCalendar :global(.rbc-toolbar button.rbc-active) {
+  background: #312f2f;
+  color: white;
+}
+
+.planningCalendar :global(.rbc-time-view) {
+  color: #312f2f;
+  font-size: 15px;
+}
+
+.planningCalendar :global(.rbc-month-view) {
+  color: #312f2f;
+  font-size: 15px;
+}
+
+.planningCalendar :global(.rbc-date-cell button) {
+  color: #312f2f;
+  font-size: 12px;
+}
+
+.planningCalendar :global(.rbc-event) {
+  color: #ffffff;
+  font-size: 12px;
+  background-color: #312f2f;
+}
+
+.planningCalendar :global(.rbc-today) {
+  background-color: #312f2f22;
+}

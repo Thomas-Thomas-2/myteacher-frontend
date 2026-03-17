@@ -1,0 +1,160 @@
+.page {
+    min-height: 100vh;
+    background: #f6f6f6;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    height: 8vh;
+    width: 100%;
+    background: #312f2f;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 12px;
+}
+
+.card {
+    width: min(440px, 92vw);
+    background: #fff;
+    border: 1px solid #e9e9e9;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    padding: 28px 22px;
+    text-align: center;
+}
+
+.logo {
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25));
+}
+
+.title {
+    font-size: 2rem;
+    margin: 10px 0 18px;
+}
+
+.form {
+    display: grid;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+}
+
+.input {
+    width: 100%;
+    height: 44px;
+    font-size: 1rem;
+    padding: 0 14px;
+    border: 1px solid #d9d9d9;
+    border-radius: 10px;
+    outline: none;
+    background: #fff;
+}
+
+.input:focus {
+    border-color: #86b2cc;
+    box-shadow: 0 0 0 3px rgba(134, 178, 204, 0.25);
+}
+
+.primaryBtn {
+    height: 44px;
+    border-radius: 12px;
+    border: 1px solid #000;
+    background: #a5d9f7;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.primaryBtn:hover {
+    background: #86b2cc;
+    transition: 0.2s;
+}
+
+.primaryBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.secondaryBtn {
+    height: 44px;
+    border-radius: 12px;
+    border: 1px solid #000;
+    background: #85dccf;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 12px;
+}
+
+.secondaryBtn:hover {
+    background: #6cb4a9;
+    transition: 0.2s;
+}
+
+.linkBtn {
+    background: transparent;
+    border: none;
+    color: #2b6cb0;
+    cursor: pointer;
+    margin-top: 10px;
+    text-decoration: underline;
+    font-size: 0.95rem;
+}
+
+.errorBox {
+    margin-top: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: #ffe9ee;
+    border: 1px solid #ffb3c1;
+    color: #8a1f35;
+    font-size: 0.95rem;
+}
+
+.passwordWrap {
+    position: relative;
+}
+
+.togglePwd {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #2b6cb0;
+    text-decoration: underline;
+}
+
+.codeBox {
+    display: block;
+    padding: 12px;
+    margin-top: 10px;
+    background: #f3f3f3;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    word-break: break-all;
+    text-align: left;
+}
+
+.infoBox {
+    margin-top: 12px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: rgba(0, 128, 0, 0.08);
+    border: 1px solid rgba(0, 128, 0, 0.25);
+    font-size: 0.95rem;
+}

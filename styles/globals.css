@@ -1,0 +1,30 @@
+@font-face {
+  font-family: "Roboto Regular";
+  src: url("/fonts/Roboto-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Roboto Bold";
+  src: url("/fonts/Roboto-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Roboto Italic";
+  src: url("/fonts/Roboto-Italic.ttf");
+}
+
+@font-face {
+  font-family: "Roboto SemiBold";
+  src: url("/fonts/Roboto-SemiBold.ttf");
+}
+
+html, body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto Regular";
+}
+
+* {
+  box-sizing: border-box;
+}
