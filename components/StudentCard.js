@@ -96,7 +96,7 @@ function StudentCard(props) {
           </span>
         </button>
 
-        <button
+        {/* <button
           type="button"
           className={styles.messageBtn}
           onClick={handleOpenConversation}
@@ -104,7 +104,7 @@ function StudentCard(props) {
           aria-label={`Ouvrir la messagerie avec ${props.firstname} ${props.lastname}`}
         >
           <FontAwesomeIcon icon={faEnvelope} />
-        </button>
+        </button> */}
       </div>
 
       <p className={styles.discipline}>{props.discipline}</p>
