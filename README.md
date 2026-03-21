@@ -27,7 +27,7 @@ The front-end provides two user journeys : one for teachers and one for students
 - Others : moment.js, react-big-calendar...
 
 ## Prerequisites
-Before running the project locally, make sure you also got the back-end code running. <br>
+Before running the project locally, make sure you also got the back-end code installed. <br>
 See back-end repository for more information : https://github.com/Thomas-Thomas-2/myteacher-backend.git
 
 ## Installation and local launch
