@@ -56,5 +56,5 @@ Watch the demonstration : <br>
 - To allow teachers to define availability time slot for lessons booking ;
 - To allow students to directly book additional lessons ;
 - To implement payment online for students ;
-- Creating of recurring events...
+- Creating recurring events...
 
