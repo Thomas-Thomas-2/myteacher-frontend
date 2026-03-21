@@ -7,7 +7,7 @@
 - **Purpose**: To help independent teachers to manage their daily business.
 
 ## Overview
-This repository contains the frontend of the project **MyTeacher**. <br>
+This repository contains the front-end of the project **MyTeacher**. <br>
 This project is an end of training bootcamp project, developed during two weeks by a team of 4 developers. <br>
 The front-end provides two user journeys : one for teachers and one for students.
 
