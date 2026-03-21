@@ -9,7 +9,7 @@
 ## Overview
 This repository contains the frontend of the project **MyTeacher**.
 This project is an end of training bootcamp project, developed during two weeks by a team of 4 developers.
-The front-end provides two users journey : one for teachers and one for students.
+The front-end provides two user journeys : one for teachers and one for students.
 
 ## Main features
 - User authentication
