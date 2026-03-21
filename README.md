@@ -48,6 +48,7 @@ NEXT_PUBLIC_BACKEND_URL=http://localhost:3000
 This front-end is deployed on Vercel : https://myteacher-frontend-three.vercel.app/
 
 ## Demo
+Watch the demonstration : <br>
 [![Watch the demonstration](./public/Capture_Accueil.png)](https://player.cloudinary.com/embed/?cloud_name=dedeskvc6&public_id=MyTeacher_1_ip6zmh)
 
 ## Future improvements
