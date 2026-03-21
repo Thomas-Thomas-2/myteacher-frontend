@@ -39,7 +39,7 @@ npm run dev OR yarn dev <br>
 
 The application will be available at: http://localhost:3001
 
-## Environnement variables
+## Environment variables
 Create a .env.local . <br>
 For local launch, set : <br>
 NEXT_PUBLIC_BACKEND_URL=http://localhost:3000
