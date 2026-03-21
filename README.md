@@ -7,8 +7,8 @@
 - **Purpose**: To help independent teachers to manage their daily business.
 
 ## Overview
-This repository contains the frontend of the project **MyTeacher**.
-This project is an end of training bootcamp project, developed during two weeks by a team of 4 developers.
+This repository contains the frontend of the project **MyTeacher**. <br>
+This project is an end of training bootcamp project, developed during two weeks by a team of 4 developers. <br>
 The front-end provides two user journeys : one for teachers and one for students.
 
 ## Main features
@@ -27,21 +27,21 @@ The front-end provides two user journeys : one for teachers and one for students
 - Others : moment.js, react-big-calendar...
 
 ## Prerequisites
-Before running the project locally, make sure you also got the back-end code running.
+Before running the project locally, make sure you also got the back-end code running. <br>
 See back-end repository for more information : https://github.com/Thomas-Thomas-2/myteacher-backend.git
 
 ## Installation and local launch
-Clone the repository and install dependencies:
-git clone https://github.com/Thomas-Thomas-2/myteacher-frontend.git
-cd myteacher-frontend
-npm install OR yarn install
-npm run dev OR yarn dev
+Clone the repository and install dependencies: <br>
+git clone https://github.com/Thomas-Thomas-2/myteacher-frontend.git <br>
+cd myteacher-frontend <br>
+npm install OR yarn install <br>
+npm run dev OR yarn dev <br>
 
 The application will be available at: http://localhost:3001
 
 ## Environnement variables
-Create a .env.local .
-For local launch, set :
+Create a .env.local . <br>
+For local launch, set : <br>
 NEXT_PUBLIC_BACKEND_URL=http://localhost:3000
 
 ## Deployement
