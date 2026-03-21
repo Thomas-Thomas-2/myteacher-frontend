@@ -33,77 +33,6 @@ function DashboardTeacher() {
     setModalAddStudent(true);
   };
 
-  /*
-  useEffect(() => {
-    (async () => {
-      // Fetch students
-      try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/students/getStudents`,
-          {
-            method: "GET",
-            credentials: "include",
-          },
-        );
-
-        const data = await response.json();
-        console.log("Data students fetched:", data);
-        // Version dès que backend ok
-        data.result
-          ? dispatch(getStudents(data.students))
-          : console.log(data.error);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-
-      // Fetch payments
-      try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/invoices/getInvoices`,
-          {
-            method: "GET",
-            credentials: "include",
-          },
-        );
-
-        const data = await response.json();
-        console.log("Data invoices fetched:", data);
-        // Version dès que backend ok
-        data.result
-          ? dispatch(getPayments(data.invoices))
-          : console.log(data.error);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-
-      //fetch events
-      try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/lessons/getLessons`,
-          {
-            method: "GET",
-            credentials: "include",
-          },
-        );
-
-        const data = await response.json();
-        console.log("Data lessonsfetched:", data);
-        // Version dès que backend ok
-        data.result
-          ? dispatch(getEvents(data.lessons))
-          : console.log(data.error);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    })();
-
-    // En attendant données backend, dispatch de données statiques
-    dispatch(getStudents(dataStudent));
-    dispatch(getPayments(dataPayment));
-    dispatch(getEvents(events));
-  }, []);*/
-
-  // les mocks ne servent qu’en secours
   useEffect(() => {
     setLoading(true);
     (async () => {
@@ -169,33 +98,12 @@ function DashboardTeacher() {
     })();
   }, [dispatch, router]);
 
-  /*
-  const students = studentsData.map((data, i) => (
-    <StudentCard
-      key={i}
-      id={data.id}
-      firstname={data.firstName}
-      lastname={data.lastName}
-      discipline={data.discipline}
-      invite={(data.status || "Prospect") === "Prospect"}
-      status={data.status || "Prospect"}
-      subscription={
-        typeof data.subscription === "string"
-          ? data.subscription
-          : data.subscription?.type || ""
-      }
-      email={data.email}
-      onInviteClick={() => openInviteModal(data)}
-    />
-  ));
-  */
-
   const students = (Array.isArray(studentsData) ? studentsData : [])
     .filter(Boolean)
     .map((data, i) => (
       <StudentCard
-        key={data.id || data._id || i}
-        id={data.id || data._id}
+        key={data.id || i}
+        id={data.id}
         firstname={data.firstName || ""}
         lastname={data.lastName || ""}
         discipline={data.discipline || ""}

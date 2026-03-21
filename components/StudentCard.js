@@ -20,7 +20,6 @@ function StudentCard(props) {
 
   const handleStatusChange = async (newStatus) => {
     setStatus(newStatus);
-    // Fetch pour mettre à jour le statut de l'étudiant dans la base de données à ajouter
     try {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/students/changeStatus`,
@@ -38,48 +37,12 @@ function StudentCard(props) {
       );
 
       const data = await response.json();
-      console.log("Status student updated:", data);
-      // Version dès que backend ok
       data.result
         ? dispatch(updateStudentStatus({ id: props.id, status: newStatus }))
-        : console.log(data.error);
+        : alert(data.error);
     } catch (error) {
       console.error("Error fetching data:", error);
-    }
-  };
-
-  const handleOpenConversation = async () => {
-    if (!props.id || isOpeningConversation) return;
-
-    setIsOpeningConversation(true);
-
-    try {
-      const token = localStorage.getItem("token");
-
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/messages/conversations/student/${props.id}`,
-        {
-          method: "POST",
-          credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: token ? `Bearer ${token}` : "",
-          },
-        },
-      );
-
-      const data = await response.json();
-
-      if (!data.result || !data.conversation?._id) {
-        console.error("Impossible de créer ou récupérer la conversation", data);
-        return;
-      }
-
-      router.push(`/teacher_messages?conversationId=${data.conversation._id}`);
-    } catch (error) {
-      console.error("openConversation error:", error);
-    } finally {
-      setIsOpeningConversation(false);
+      alert("Issue while updating status.");
     }
   };
 
@@ -95,25 +58,10 @@ function StudentCard(props) {
             {props.firstname} {props.lastname}
           </span>
         </button>
-
-        {/* <button
-          type="button"
-          className={styles.messageBtn}
-          onClick={handleOpenConversation}
-          title="Ouvrir la messagerie"
-          aria-label={`Ouvrir la messagerie avec ${props.firstname} ${props.lastname}`}
-        >
-          <FontAwesomeIcon icon={faEnvelope} />
-        </button> */}
       </div>
 
       <p className={styles.discipline}>{props.discipline}</p>
-      {/*{!props.invite && (
-        <button className={styles.inviteBtn}>
-          <span className={styles.inviteText}>Inviter</span>
-        </button>
-      )} 
-       changement du bloc invite pour faire fonctionner l'envoi de mail */}
+
       {status === "Prospect" && (
         <button
           className={styles.inviteBtn}

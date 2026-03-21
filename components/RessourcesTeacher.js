@@ -11,24 +11,6 @@ import { useRouter } from "next/router";
 
 import styles from "../styles/RessourcesTeacher.module.css";
 
-const dataRessources = [
-  {
-    id: 1,
-    title: "Fly me to the moon",
-    type: "Partition",
-  },
-  {
-    id: 2,
-    title: "Pouette",
-    type: "Partition",
-  },
-  {
-    id: 3,
-    title: "Sous le vent",
-    type: "Partition",
-  },
-];
-
 function RessourcesTeacher() {
   const router = useRouter();
   const [ressourcesData, setRessourcesData] = useState([]);
@@ -54,14 +36,12 @@ function RessourcesTeacher() {
           },
         );
         const data = await response.json();
-        // Version dès que backend ok
-        data.result
-          ? setRessourcesData(data.ressources)
-          : console.log(data.error);
+        data.result ? setRessourcesData(data.ressources) : alert(data.error);
 
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
+        alert("Server error to get ressources.");
       }
     })();
   }, [addFlag]);
@@ -76,7 +56,6 @@ function RessourcesTeacher() {
   };
 
   const deleteRessource = async (comingProps) => {
-    console.log("Supprimer ressource", comingProps._id);
     // Fetch delete ressource
     try {
       const response = await fetch(
@@ -88,15 +67,14 @@ function RessourcesTeacher() {
       );
 
       const data = await response.json();
-      console.log("Data ressources fetched:", data);
-      // Version dès que backend ok
       data.result
         ? setRessourcesData((ress) =>
             ress.filter((r) => r._id !== comingProps._id),
           )
-        : console.log(data.error);
+        : alert(data.error);
     } catch (error) {
       console.error("Error fetching data:", error);
+      alert("Error while deleting ressources.");
     }
   };
 
@@ -109,7 +87,6 @@ function RessourcesTeacher() {
   const shareRessources = async () => {
     // Fetch vers backend pour partager les ressources
     if (students.length > 0 && sharingRessources.length > 0) {
-      console.log("students", students);
       try {
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_BACKEND_URL}/ressources/share`,
@@ -126,8 +103,6 @@ function RessourcesTeacher() {
           },
         );
         const data = await response.json();
-        console.log("Data ressources fetched:", data);
-        // Version dès que backend ok
         data.result
           ? (setSharingRessources([]),
             setStudents([]),
@@ -135,12 +110,12 @@ function RessourcesTeacher() {
           : console.log(data.error);
       } catch (error) {
         console.error("Error adding event:", error);
+        alert("Server error to share ressources.");
       }
     }
   };
 
   const handleAddRessource = async (newRessource) => {
-    console.log("Ajouter ressource", newRessource);
     if (
       newRessource.title !== "" &&
       newRessource.tag !== "" &&
@@ -157,16 +132,11 @@ function RessourcesTeacher() {
           {
             method: "POST",
             credentials: "include",
-            // headers: {
-            //   "Content-Type": "application/json",
-            //   // Authorization: `Bearer ${token}`,
-            // },
             body: formData,
           },
         );
 
         const data = await response.json();
-        console.log("Data ressources fetched:", data);
 
         if (data.result) {
           alert("Ressource ajoutée !");
@@ -176,9 +146,10 @@ function RessourcesTeacher() {
         }
       } catch (error) {
         console.error("Error adding ressource :", error);
+        alert("Server error while adding ressources.");
       }
     } else {
-      console.log("Input data missing");
+      alert("Informations manquantes.");
     }
   };
 
