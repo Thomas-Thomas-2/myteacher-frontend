@@ -43,7 +43,7 @@ For local launch, set : <br>
 NEXT_PUBLIC_BACKEND_URL=http://localhost:3000
 
 ## Deployement
-This frontend is deployed on Vercel : https://myteacher-frontend-three.vercel.app/
+This frontend is deployed on Vercel : https://www.my-teacher-app.fr/
 
 ## Demo
 Watch the demonstration : <br>
