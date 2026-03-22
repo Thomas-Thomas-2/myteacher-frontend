@@ -101,10 +101,7 @@ function HeaderTeacher() {
             onClick={() => setShowPopover(!showPopover)}
           >
             <span>{user?.firstName || "Profil"}</span>
-            <FontAwesomeIcon
-              icon={faChevronDown}
-              className={styles.chevronIcon}
-            />
+            <FontAwesomeIcon icon={faChevronDown} className={styles.icon} />
           </button>
 
           {showPopover && (
@@ -120,7 +117,10 @@ function HeaderTeacher() {
                 className={styles.popoverLogout}
                 onClick={handleLogout}
               >
-                <FontAwesomeIcon icon={faArrowRightFromBracket} />
+                <FontAwesomeIcon
+                  icon={faArrowRightFromBracket}
+                  className={styles.icon}
+                />
                 <span>Déconnexion</span>
               </button>
             </div>

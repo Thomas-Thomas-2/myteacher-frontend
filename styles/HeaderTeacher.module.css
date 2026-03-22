@@ -90,8 +90,10 @@
   align-items: center;
 }
 
-.chevronIcon {
+.icon {
   font-size: 15px;
+  width: 15px;
+  height: 15px;
 }
 
 .popover {
