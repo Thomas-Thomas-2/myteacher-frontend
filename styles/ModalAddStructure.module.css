@@ -31,7 +31,9 @@
 .close {
   background: transparent;
   color: rgb(0, 0, 0);
-  font-size: 20px;
+  font-size: 25px;
+  width: 25px;
+  height: 25px;
   cursor: pointer;
   border: none;
 }

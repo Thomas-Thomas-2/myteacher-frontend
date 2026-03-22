@@ -7,22 +7,14 @@ export default function ModalAddRessource({ onClose, addRessourceFct }) {
   const [title, setTitle] = useState("");
   const [tag, setTag] = useState("");
   const [file, setFile] = useState(null);
-  console.log("file", file);
 
   const handleAdd = () => {
     if (!title && !tag && !file) {
-      console.log("Data missing in form");
+      alert("Data missing in form");
     } else {
       addRessourceFct({ title, tag, file });
       onClose();
     }
-  };
-
-  const handleUploadRessource = () => {
-    // Logique manquante pour uploader la ressource puis l'envoyer sur cloudinary via backend et récupérer url
-    setUrl(
-      "https://res.cloudinary.com/dzj8q3n9o/image/upload/v1700000000/ressource_example.jpg",
-    );
   };
 
   return (

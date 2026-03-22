@@ -88,6 +88,7 @@ function RessourcesTeacher() {
     // Fetch vers backend pour partager les ressources
     if (students.length > 0 && sharingRessources.length > 0) {
       try {
+        setLoading(true);
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_BACKEND_URL}/ressources/share`,
           {
@@ -106,6 +107,7 @@ function RessourcesTeacher() {
         data.result
           ? (setSharingRessources([]),
             setStudents([]),
+            setLoading(false),
             alert("Ressources partagées !"))
           : console.log(data.error);
       } catch (error) {
@@ -127,6 +129,7 @@ function RessourcesTeacher() {
       formData.append("tag", newRessource.tag);
 
       try {
+        setLoading(true);
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_BACKEND_URL}/ressources/add`,
           {
@@ -139,6 +142,7 @@ function RessourcesTeacher() {
         const data = await response.json();
 
         if (data.result) {
+          setLoading(false);
           alert("Ressource ajoutée !");
           setAddFlag(!addFlag);
         } else {
