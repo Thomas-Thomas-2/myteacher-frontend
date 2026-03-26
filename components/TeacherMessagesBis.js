@@ -16,8 +16,6 @@ export default function TeacherMessagesBis() {
   const [students, setStudents] = useState([]);
   const [user, setUser] = useState("");
 
-  console.log("messages test", messages);
-
   // Load students at mounting
   useEffect(() => {
     (async () => {
