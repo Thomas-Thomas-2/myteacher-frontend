@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { getSocket, disconnectSocket } from "../lib/socket";
 import HeaderTeacher from "./HeaderTeacher";
 import FooterTeacher from "./FooterTeacher";
-import styles from "../styles/TeacherMessages.module.css";
+import styles from "../styles/TeacherMessagesBis.module.css";
 import { useRouter } from "next/router";
 
 export default function TeacherMessages() {

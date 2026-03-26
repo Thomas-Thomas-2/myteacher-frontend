@@ -5,7 +5,7 @@
   grid-template-columns: 2fr 1fr 1fr 140px;
   align-items: center;
   gap: 18px;
-  font-family: "Roboto-Regular";
+  font-family: "Roboto Regular";
   border-bottom: 1px solid rgb(211, 211, 211);
   box-sizing: border-box;
 }

@@ -29,17 +29,7 @@ function Signin() {
     });
     setLoading(false);
 
-    console.log("login data =", data);
-
     if (!ok) return setError(data?.error || "Login failed");
-
-    if (data?.token) {
-      localStorage.setItem("token", data.token);
-    }
-
-    if (data?.user) {
-      localStorage.setItem("user", JSON.stringify(data.user));
-    }
 
     if (data?.user?.role === "student") {
       router.replace("/dashboard_student");
