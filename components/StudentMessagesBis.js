@@ -1,29 +1,29 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { getSocket, disconnectSocket } from "../lib/socket";
-import HeaderTeacher from "./HeaderTeacher";
-import FooterTeacher from "./FooterTeacher";
-import styles from "../styles/TeacherMessagesBis.module.css";
+import HeaderStudent from "./HeaderStudent";
+import FooterStudent from "./FooterStudent";
+import styles from "../styles/StudentMessagesBis.module.css";
 import { useRouter } from "next/router";
 const { checkIsSignin } = require("../modules/checkRole");
 import ConversationCard from "./ConversationCard";
 import Pusher from "pusher-js";
 import moment from "moment";
 
-export default function TeacherMessagesBis() {
+export default function StudentMessagesBis() {
   const router = useRouter();
-  const [selectedStudentId, setSelectedStudentId] = useState(null);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
-  const [students, setStudents] = useState([]);
+  const [teacher, setTeacher] = useState("");
   const [user, setUser] = useState("");
 
-  // Load students at mounting
+  // Set conversation settings at mounting : teacher, userId and messages
   useEffect(() => {
     (async () => {
       await checkIsSignin(router);
+      // Get teacher
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/students/getStudents`,
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/students/me`,
           {
             method: "GET",
             credentials: "include",
@@ -32,7 +32,7 @@ export default function TeacherMessagesBis() {
 
         const data = await response.json();
         if (data.result) {
-          setStudents(data.students);
+          setTeacher(data.student.teacher);
         }
 
         // Get current user id
@@ -52,18 +52,11 @@ export default function TeacherMessagesBis() {
         console.error("Error getting current user:", error);
         alert(error);
       }
-    })();
-  }, []);
 
-  useEffect(() => {
-    if (!selectedStudentId || !user) {
-      return;
-    }
-    // fetch messages regarding this student
-    (async () => {
+      // Get messages history
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/messagesBis/${selectedStudentId}`,
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/messagesBis`,
           {
             method: "GET",
             credentials: "include",
@@ -71,7 +64,6 @@ export default function TeacherMessagesBis() {
         );
 
         const data = await response.json();
-        console.log("messages", data);
         if (data.result) {
           setMessages(data.messages);
         }
@@ -80,19 +72,18 @@ export default function TeacherMessagesBis() {
         alert(error);
       }
     })();
-
     // connect to pusher
     const pusher = new Pusher(process.env.NEXT_PUBLIC_KEY, { cluster: "eu" });
-    const channel = pusher.subscribe(`channel-${user}-${selectedStudentId}`);
+    const channel = pusher.subscribe(`channel-${teacher}-${user}`);
     channel.bind("new-message", (data) => {
       setMessages((oldMessages) => [...oldMessages, data.message]);
     });
 
     return () => {
       channel.unbind();
-      channel.unsubscribe(`channel-${user}-${selectedStudentId}`);
+      channel.unsubscribe(`channel-${teacher}-${user}`);
     };
-  }, [selectedStudentId, user]);
+  }, [teacher, user]);
 
   const handleSendMessage = async () => {
     if (!input.trim()) {
@@ -108,7 +99,7 @@ export default function TeacherMessagesBis() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            studentId: selectedStudentId,
+            teacherId: teacher,
             content: input,
           }),
         },
@@ -124,36 +115,21 @@ export default function TeacherMessagesBis() {
     }
   };
 
-  const selectConversation = async (studentId) => {
-    setSelectedStudentId(studentId);
-  };
-
-  const conversationList = students.map(
-    (data, i) =>
-      data.status === "Actif" && (
-        <ConversationCard
-          key={i}
-          student={data}
-          selectConversation={selectConversation}
-          selected={data.userId === selectedStudentId ? true : false}
-        />
-      ),
-  );
-
   const messageList = messages.map((data, i) =>
     data.senderUser === user ? (
-      <div key={i} className={styles.teacherMessage}>
+      <div key={i} className={styles.studentMessage}>
         <span className={styles.dateMessage}>
-          {moment(data.createdAt).format("D MMM YYYY, hh:mm a")} - Toi :{" "}
+          {moment(data.createdAt).format("D MMM YYYY, hh:mm a")} - Toi :
         </span>{" "}
         <br />
         {data.content}
       </div>
     ) : (
-      <div key={i} className={styles.studentMessage}>
+      <div key={i} className={styles.teacherMessage}>
         <span className={styles.dateMessage}>
-          {moment(data.createdAt).format("D MMM YYYY, hh:mm a")} - Ton élève :
-        </span>
+          {moment(data.createdAt).format("D MMM YYYY, hh:mm a")} - Ton
+          professeur :
+        </span>{" "}
         <br />
         {data.content}
       </div>
@@ -162,19 +138,16 @@ export default function TeacherMessagesBis() {
 
   return (
     <div className={styles.page}>
-      <HeaderTeacher />
+      <HeaderStudent />
 
       <div className={styles.wrapper}>
-        <aside className={styles.sidebar}>
-          <div className={styles.sidebarHeader}>Conversations</div>
-          {conversationList}
-        </aside>
-
         <section className={styles.main}>
           <div className={styles.mainHeader}>
-            <div className={styles.mainTitle}>Sélectionne une conversation</div>
+            <div className={styles.mainTitle}>
+              Conversation avec ton professeur
+            </div>
             <div className={styles.mainSubtitle}>
-              Messagerie professeur ↔ élève
+              Messagerie élève ↔ professeur
             </div>
           </div>
 
@@ -188,13 +161,8 @@ export default function TeacherMessagesBis() {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder={
-                selectedStudentId
-                  ? "Écrire un message..."
-                  : "Choisis d'abord un élève pour démarrer une conversation"
-              }
+              placeholder={"Écrire un message..."}
               className={styles.input}
-              disabled={!selectedStudentId}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
                   handleSendMessage();
@@ -204,7 +172,7 @@ export default function TeacherMessagesBis() {
             <button
               onClick={handleSendMessage}
               className={styles.sendButton}
-              disabled={!input.trim() || !selectedStudentId}
+              disabled={!input.trim()}
             >
               Envoyer
             </button>
@@ -212,7 +180,7 @@ export default function TeacherMessagesBis() {
         </section>
       </div>
 
-      <FooterTeacher />
+      <FooterStudent />
     </div>
   );
 }
