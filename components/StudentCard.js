@@ -10,7 +10,6 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 function StudentCard(props) {
   const router = useRouter();
   const [status, setStatus] = useState(props.status || "");
-  const [isOpeningConversation, setIsOpeningConversation] = useState(false);
 
   useEffect(() => {
     setStatus(props.status || "");

@@ -62,7 +62,6 @@ export default function ModalAddEvent({ onClose, start, end }) {
       );
 
       const data = await response.json();
-      console.log("Data events fetched:", data);
 
       if (data.result) {
         dispatch(addEventToStore(data.lesson));

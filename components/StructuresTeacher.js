@@ -8,25 +8,6 @@ import { useSelector } from "react-redux";
 
 import styles from "../styles/StructuresTeacher.module.css";
 
-const dataStructures = [
-  {
-    _id: 1,
-    name: "Auto-entreprise",
-    weekWorkLoad: 10,
-    feesPlace: 30,
-    accountability: 50,
-    income: 600,
-  },
-  {
-    _id: 2,
-    name: "Conservatoire",
-    weekWorkLoad: 8,
-    feesPlace: 0,
-    accountability: 0,
-    income: 400,
-  },
-];
-
 function StructuresTeacher() {
   const [structuresData, setStructuresData] = useState([]);
   const [modalAddStructure, setModalAddStructure] = useState(false);
@@ -56,7 +37,6 @@ function StructuresTeacher() {
   }, [addFlag]);
 
   const deleteStructure = async (comingProps) => {
-    console.log("Supprimer structure", comingProps._id);
     // Fetch delete ressource
     try {
       const response = await fetch(
@@ -68,7 +48,6 @@ function StructuresTeacher() {
       );
 
       const data = await response.json();
-      console.log("Data structures fetched:", data);
       // Version dès que backend ok
       data.result
         ? setStructuresData((ress) =>
@@ -96,7 +75,6 @@ function StructuresTeacher() {
             credentials: "include",
             headers: {
               "Content-Type": "application/json",
-              // Authorization: `Bearer ${token}`,
             },
             body: JSON.stringify({
               name: newStructure.name,
