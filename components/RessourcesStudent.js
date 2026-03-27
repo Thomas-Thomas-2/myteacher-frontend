@@ -14,7 +14,6 @@ function RessourcesStudent() {
   const router = useRouter();
   const [ressourcesData, setRessourcesData] = useState([]);
   const studentsData = useSelector((state) => state.students.value);
-  console.log("studentsData", studentsData);
 
   useEffect(() => {
     (async () => {
@@ -29,13 +28,13 @@ function RessourcesStudent() {
           },
         );
         const data = await response.json();
-        console.log("data ressources", data);
         // Version dès que backend ok
         data.result
           ? setRessourcesData(data.ressources)
           : console.log(data.error);
       } catch (error) {
         console.error("Error fetching data:", error);
+        alert(error);
       }
     })();
   }, []);

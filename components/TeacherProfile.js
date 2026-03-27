@@ -52,6 +52,7 @@ function TeacherProfile() {
         }
       } catch (error) {
         console.error("Error fetching profile:", error);
+        alert(error);
       }
     };
 

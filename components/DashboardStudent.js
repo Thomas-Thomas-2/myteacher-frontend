@@ -23,52 +23,6 @@ function DashboardStudent() {
   const [documentsCount, setDocumentsCount] = useState(0);
   const [nextLesson, setNextLesson] = useState("Aucun cours prévu");
 
-  /*useEffect(() => {
-    api("/users/me").then(({ ok, data }) => {
-      if (!ok || !data?.result) {
-        console.log(data?.error || "Erreur récupération utilisateur");
-        return;
-      }
-
-      const userId = data.user?.id;
-
-      if (!userId) {
-        console.log("Aucun userId trouvé");
-        return;
-      }
-
-      // Charger les cours
-      api(`/lessons/getLessonsStudentById/${userId}`).then(({ ok, data }) => {
-        if (!ok || !data?.result) {
-          console.log(data?.error || "Erreur chargement cours élève");
-          return;
-        }
-
-        dispatch(getEvents(data.lessons));
-      });
-
-      // Charger les paiements
-      api(`/invoices/getInvoicesStudentById/${userId}`).then(({ ok, data }) => {
-        if (!ok || !data?.result) {
-          console.log(data?.error || "Erreur chargement paiements");
-          return;
-        }
-
-        const invoices = data.invoices || [];
-
-        if (invoices.some((i) => i.status === "late")) {
-          setPaymentStatus("En retard");
-        } else if (invoices.some((i) => i.status === "pending")) {
-          setPaymentStatus("En attente");
-        } else if (invoices.some((i) => i.status === "paid")) {
-          setPaymentStatus("À jour");
-        } else {
-          setPaymentStatus("Aucun paiement");
-        }
-      });
-    });
-  }, [dispatch]);*/
-
   useEffect(() => {
     (async () => {
       checkIsSignin(router); //Check if user is still authenticated, if not send them back to signin

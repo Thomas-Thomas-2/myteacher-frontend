@@ -25,13 +25,13 @@ function StructuresTeacher() {
           },
         );
         const data = await response.json();
-        console.log("data structures", data);
         // Version dès que backend ok
         data.result
           ? setStructuresData(data.structures)
           : console.log(data.error);
       } catch (error) {
         console.error("Error fetching data:", error);
+        alert(error);
       }
     })();
   }, [addFlag]);
@@ -53,9 +53,10 @@ function StructuresTeacher() {
         ? setStructuresData((ress) =>
             ress.filter((r) => r._id !== comingProps._id),
           )
-        : console.log(data.error);
+        : alert(data.error);
     } catch (error) {
       console.error("Error fetching data:", error);
+      alert(error);
     }
   };
 
@@ -87,7 +88,6 @@ function StructuresTeacher() {
         );
 
         const data = await response.json();
-        console.log("Data structures fetched:", data);
 
         if (data.result) {
           alert("Structure ajoutée !");
@@ -97,9 +97,10 @@ function StructuresTeacher() {
         }
       } catch (error) {
         console.error("Error adding structure :", error);
+        alert(error);
       }
     } else {
-      console.log("Input data missing");
+      alert("Input data missing");
     }
   };
 

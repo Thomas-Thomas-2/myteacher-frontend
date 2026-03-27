@@ -20,8 +20,6 @@ export default function ModalRemoveEvent({ onClose, event }) {
       );
       const data = await response.json();
 
-      console.log("Response from backend:", data);
-
       if (data.result) {
         dispatch(removeEventFromStore(event));
 
@@ -47,6 +45,7 @@ export default function ModalRemoveEvent({ onClose, event }) {
       }
     } catch (error) {
       console.error("Error removing event:", error);
+      alert(error);
       onClose();
     }
   };

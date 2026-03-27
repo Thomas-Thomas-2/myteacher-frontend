@@ -39,8 +39,6 @@ function StudentProfile() {
 
         const userData = await userRes.json();
         const studentData = await studentRes.json();
-        console.log("userData", userData);
-        console.log("studentData", studentData);
 
         if (userData.result && studentData.result) {
           setFormData({
@@ -55,6 +53,7 @@ function StudentProfile() {
         }
       } catch (error) {
         console.error("Error fetching profile:", error);
+        alert(error);
       }
     };
 
